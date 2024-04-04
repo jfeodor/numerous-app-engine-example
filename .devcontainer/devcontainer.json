@@ -1,0 +1,21 @@
+{
+    "name": "Python 3",
+    "image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.mypy-type-checker"
+            ]
+        }
+    },
+    "portsAttributes": {
+        "7001": {
+            "label": "numerous dev command",
+            "onAutoForward": "notify"
+        }
+    },
+    "postCreateCommand": "pip3 install -r requirements.txt"
+}
