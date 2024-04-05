@@ -1,6 +1,9 @@
 {
     "name": "Python 3",
-    "image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
     "customizations": {
         "vscode": {
             "settings": {},
@@ -16,6 +19,5 @@
             "label": "numerous dev command",
             "onAutoForward": "notify"
         }
-    },
-    "postCreateCommand": "pip3 install -r requirements.txt"
+    }
 }
