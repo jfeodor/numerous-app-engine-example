@@ -1,9 +1,8 @@
-
-# fix numerous login
-if [[ ${DBUS_SESSION_BUS_ADDRESS} = "" ]]; then
-    # if no dbus session is active, start one
-    exec dbus-run-session -- bash
-else
-    # if a dbus session is active, unlock the keyring
-    echo -n "" | gnome-keyring-daemon --unlock > /dev/null
+if [[ ! -f ~/.keyring-env.sh ]]; then
+    DBUS_ENV=$(dbus-launch --sh-syntax)
+    KEYRING_ENV=$(echo "" | gnome-keyring-daemon --unlock)
+    echo "$DBUS_ENV" >> .keyring-env.sh
+    echo "$KEYRING_ENV" >> .keyring-env.sh
 fi
+
+eval $(cat .keyring-env.sh)
