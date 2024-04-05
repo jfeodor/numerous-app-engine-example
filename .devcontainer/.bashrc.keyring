@@ -5,5 +5,5 @@ if [[ ${DBUS_SESSION_BUS_ADDRESS} = "" ]]; then
     exec dbus-run-session -- bash
 else
     # if a dbus session is active, unlock the keyring
-    echo  | gnome-keyring-daemon --unlock > /dev/null
+    echo -n "" | gnome-keyring-daemon --unlock > /dev/null
 fi
