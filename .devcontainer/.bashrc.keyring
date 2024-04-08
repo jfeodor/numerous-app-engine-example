@@ -1,8 +1,10 @@
-if [[ ! -f ~/.keyring-env.sh ]]; then
+KEYRING_FILE=~/.keyring-env.sh
+
+if [[ ! -f $KEYRING_FILE ]]; then
     DBUS_ENV=$(dbus-launch --sh-syntax)
     KEYRING_ENV=$(echo "" | gnome-keyring-daemon --unlock)
-    echo "$DBUS_ENV" >> .keyring-env.sh
-    echo "$KEYRING_ENV" >> .keyring-env.sh
+    echo "$DBUS_ENV" >> $KEYRING_FILE
+    echo "$KEYRING_ENV" >> $KEYRING_FILE
 fi
 
-eval $(cat .keyring-env.sh)
+eval $(cat $KEYRING_FILE)
